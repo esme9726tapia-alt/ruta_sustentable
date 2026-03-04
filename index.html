@@ -1,248 +1,218 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ruta Sustentable | Feria de Ciencia</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
-
 <style>
-:root {
-    --verde: #2e7d32;
-    --verde-claro: #81c784;
-    --azul: #1976d2;
-    --gris: #f4f4f4;
-    --texto: #333;
-}
 
-html { scroll-behavior: smooth; }
-
+/* FUENTES Y BASE */
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
-    background: var(--gris);
-    color: var(--texto);
+    background: linear-gradient(135deg, #e8f5e9, #e3f2fd);
+    color: #333;
+    line-height: 1.6;
 }
 
-/* HEADER */
+/* HEADER MEJORADO */
 header {
-    background: linear-gradient(to right, var(--verde), var(--azul));
+    background: linear-gradient(135deg, #2e7d32, #1976d2);
     color: white;
-    text-align: center;
     padding: 3em 1em;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 header h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 3em;
+    margin-bottom: 0.3em;
+    letter-spacing: 2px;
 }
 
-/* NAV */
+header h2 {
+    font-weight: 400;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: white;
+    border-radius: 50% 50% 0 0;
+}
+
+/* NAV MODERNO */
 nav {
-    background: #1b5e20;
-    padding: 1em;
+    background: rgba(46, 125, 50, 0.95);
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5em;
-    padding: 0;
+    gap: 2em;
+    padding: 1em;
     margin: 0;
 }
 
-nav a {
+nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s ease;
+    padding: 8px 14px;
+    border-radius: 20px;
+}
+
+nav ul li a:hover {
+    background: #90caf9;
+    color: #1b5e20;
 }
 
 /* CONTENEDOR */
 .container {
     width: 90%;
     max-width: 1200px;
-    margin: 2em auto;
-    background: white;
-    padding: 2em;
-    border-radius: 10px;
+    margin: 3em auto;
 }
 
-/* SECCIONES */
-section {
-    margin-bottom: 3em;
+/* INTRO */
+.intro-section {
+    text-align: center;
+    margin-bottom: 4em;
 }
 
-h2 {
-    color: var(--azul);
-    border-bottom: 3px solid var(--verde-claro);
-    display: inline-block;
-    padding-bottom: 0.3em;
-}
-
-/* TARJETAS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-    gap: 2em;
-}
-
-.card {
-    background: var(--gris);
-    padding: 1.5em;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: all 0.6s ease;
-}
-
-.card img {
+.intro-section img {
     width: 100%;
-    border-radius: 8px;
+    max-width: 500px;
+    border-radius: 20px;
+    margin-top: 1.5em;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease;
 }
 
-.card:hover {
-    transform: translateY(-8px);
+.intro-section img:hover {
+    transform: scale(1.05);
 }
 
-/* FOOTER */
-footer {
-    background: #1b5e20;
+/* GRID */
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5em;
+}
+
+/* TARJETAS ESTILO APP */
+.transport-card {
+    background: white;
+    border-radius: 25px;
+    padding: 1.8em;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.transport-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    background: linear-gradient(to right, #4caf50, #2196f3);
+}
+
+.transport-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+}
+
+.transport-card img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 1em;
+}
+
+.transport-card h3 {
+    text-align: center;
+    color: #1565c0;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1em;
+}
+
+/* LISTAS */
+.transport-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.transport-card ul li {
+    margin-bottom: 0.6em;
+    padding-left: 1.5em;
+    position: relative;
+}
+
+.transport-card ul li::before {
+    content: "🌱";
+    position: absolute;
+    left: 0;
+}
+
+/* LINKS */
+.links-section {
+    margin-top: 5em;
+    text-align: center;
+}
+
+.links-section ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    padding: 0;
+}
+
+.links-section ul li {
+    background: linear-gradient(135deg, #4caf50, #2196f3);
+    padding: 0.9em 1.6em;
+    border-radius: 30px;
+    transition: 0.3s ease;
+}
+
+.links-section ul li:hover {
+    transform: scale(1.08);
+}
+
+.links-section ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* FOOTER PREMIUM */
+.footer {
+    background: linear-gradient(135deg, #1b5e20, #0d47a1);
     color: white;
     text-align: center;
     padding: 2em 1em;
+    margin-top: 4em;
+    font-size: 0.9em;
 }
 
-/* ANIMACIÓN */
-.fade {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s ease;
+/* SCROLL SUAVE */
+html {
+    scroll-behavior: smooth;
 }
-.fade.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+
 </style>
-</head>
 
-<body>
-
-<header id="inicio">
-<h1>RUTA SUSTENTABLE</h1>
-<h2>Proyecto de Feria de Ciencia y Tecnología</h2>
-<p>Movilidad sustentable en la Ciudad de México</p>
-</header>
-
-<nav>
-<ul>
-<li><a href="#problema">Problema</a></li>
-<li><a href="#objetivo">Objetivo</a></li>
-<li><a href="#transporte">Transporte</a></li>
-<li><a href="#impacto">Impacto</a></li>
-<li><a href="#conclusion">Conclusión</a></li>
-</ul>
-</nav>
-
-<div class="container">
-
-<section id="problema" class="fade">
-<h2>Planteamiento del problema</h2>
-<p>
-El uso excesivo de automóviles particulares genera contaminación del aire,
-tráfico y problemas de salud. Es necesario promover alternativas de movilidad
-sustentable que reduzcan el impacto ambiental en la CDMX.
-</p>
-</section>
-
-<section id="objetivo" class="fade">
-<h2>Objetivo del proyecto</h2>
-<p>
-Analizar y difundir los medios de transporte sustentables de la Ciudad de México,
-mostrando cómo contribuyen al cuidado del medio ambiente y a una mejor calidad de vida.
-</p>
-</section>
-
-<section id="transporte">
-<h2>Transportes Sustentables</h2>
-
-<div class="grid">
-
-<div class="card fade">
-<h3>Metro</h3>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png/1024px-NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png">
-<p>Transporta millones de personas diariamente con menor emisión de contaminantes.</p>
-</div>
-
-<div class="card fade">
-<h3>Metrobús</h3>
-<img src="https://cdn.unotv.com/images/2025/05/como-esta-el-servicio-del-metrobus-por-movilizaciones-de-la-cnte-en-cdmx-093427.jpg">
-<p>Reduce emisiones y optimiza el uso del transporte público.</p>
-</div>
-
-<div class="card fade">
-<h3>Trolebús</h3>
-<img src="https://elceo.com/wp-content/uploads/2025/05/trolebus-elevado-asi-es-como-operara-el-nuevo-sistema-de-transporte-en-la-cdmx.jpg">
-<p>Funciona con energía eléctrica, sin emisiones directas.</p>
-</div>
-
-<div class="card fade">
-<h3>Cablebús</h3>
-<img src="https://oem.com.mx/la-prensa/img/15558006/1654529028/BASE_LANDSCAPE/1200/image.webp">
-<p>Conecta zonas altas reduciendo tiempo y contaminación.</p>
-</div>
-
-<div class="card fade">
-<h3>Ecobici</h3>
-<img src="https://ciudadanosenred.com.mx/wp-content/uploads/2023/10/como-pagar-la-ecobici-cdmx-2023.jpeg">
-<p>Promueve actividad física y movilidad limpia.</p>
-</div>
-
-</div>
-</section>
-
-<section id="impacto" class="fade">
-<h2>Impacto ambiental</h2>
-<ul>
-<li>Disminución de gases contaminantes</li>
-<li>Reducción del tráfico vehicular</li>
-<li>Mejora en la salud de la población</li>
-<li>Conciencia ambiental en la sociedad</li>
-</ul>
-</section>
-
-<section id="conclusion" class="fade">
-<h2>Conclusión</h2>
-<p>
-La movilidad sustentable es una solución real para reducir la contaminación.
-Elegir transportes limpios contribuye al cuidado del planeta y mejora nuestra calidad de vida.
-</p>
-</section>
-
-</div>
-
-<footer>
-<p>Proyecto escolar | Feria de Ciencia y Tecnología 2025</p>
-<p>Escuela Secundaria Técnica 06</p>
-</footer>
-
-<script>
-const elementos = document.querySelectorAll('.fade');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
-  });
-});
-
-elementos.forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>
 
 
 
