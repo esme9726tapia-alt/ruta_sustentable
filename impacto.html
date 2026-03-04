@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impacto Ambiental - Ruta Sustentable</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+:root{
+--verde1:#1b5e20;
+--verde2:#2e7d32;
+--verde3:#4caf50;
+--azul1:#0d47a1;
+--azul2:#1976d2;
+--azul3:#42a5f5;
+--blanco:#ffffff;
+}
+
+body{
+margin:0;
+font-family:'Open Sans',sans-serif;
+background: linear-gradient(-45deg,#1b5e20,#1976d2,#2e7d32,#42a5f5);
+background-size:400% 400%;
+animation:fondo 15s ease infinite;
+color:#333;
+}
+
+@keyframes fondo{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+header{
+text-align:center;
+padding:3em 1em;
+color:white;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(8px);
+}
+
+header h1{
+font-family:'Montserrat';
+font-weight:900;
+font-size:2.5em;
+}
+
+nav{
+background:rgba(0,0,0,0.5);
+padding:1em;
+text-align:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+margin:0 1em;
+}
+
+.container{
+width:90%;
+max-width:1000px;
+margin:3em auto;
+background:rgba(255,255,255,0.92);
+padding:2em;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+}
+
+h2{
+text-align:center;
+font-family:'Montserrat';
+color:var(--azul1);
+}
+
+footer{
+text-align:center;
+padding:1.5em;
+color:white;
+margin-top:3em;
+background:rgba(0,0,0,0.6);
+}
+
+canvas{
+margin-top:2em;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Impacto Ambiental del Transporte</h1>
+<p>Proyecto Ruta Sustentable - Feria de Ciencia</p>
+</header>
+
+<nav>
+<a href="index.html">Inicio</a>
+<a href="impacto.html">Gráfica de Impacto</a>
+</nav>
+
+<div class="container">
+
+<h2>Emisiones aproximadas de CO₂ por tipo de transporte (por pasajero/km)</h2>
+
+<canvas id="graficaImpacto"></canvas>
+
+<p style="text-align:center; margin-top:2em;">
+Los transportes eléctricos y colectivos reducen significativamente las emisiones contaminantes 
+en comparación con el automóvil particular.
+</p>
+
+</div>
+
+<footer>
+<p>&copy; 2025 Movilidad Sustentable, EST 06</p>
+</footer>
+
+<script>
+
+const ctx = document.getElementById('graficaImpacto').getContext('2d');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Auto particular', 'Metro', 'Metrobús', 'Trolebús', 'Cablebús', 'Ecobici'],
+        datasets: [{
+            label: 'Gramos de CO₂ por pasajero/km',
+            data: [192, 35, 60, 0, 0, 0],
+            backgroundColor: [
+                '#d32f2f',
+                '#1976d2',
+                '#42a5f5',
+                '#4caf50',
+                '#81c784',
+                '#2e7d32'
+            ],
+            borderRadius: 10
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        size: 14
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        animation: {
+            duration: 2000
+        }
+    }
+});
+
+</script>
+
+</body>
+</html>
