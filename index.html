@@ -9,7 +9,6 @@
 
 <style>
 
-/* ===== VARIABLES ===== */
 :root{
 --verde1:#1b5e20;
 --verde2:#2e7d32;
@@ -20,7 +19,6 @@
 --blanco:#ffffff;
 }
 
-/* ===== FONDO ANIMADO ===== */
 body{
 margin:0;
 font-family:'Open Sans',sans-serif;
@@ -36,7 +34,6 @@ animation: fondo 15s ease infinite;
 100%{background-position:0% 50%}
 }
 
-/* ===== HEADER ===== */
 header{
 text-align:center;
 padding:3em 1em;
@@ -63,7 +60,6 @@ from{opacity:0;transform:translateY(-30px)}
 to{opacity:1;transform:translateY(0)}
 }
 
-/* ===== NAV ===== */
 nav{
 background:rgba(0,0,0,0.5);
 backdrop-filter:blur(6px);
@@ -84,7 +80,6 @@ nav a{
 color:white;
 text-decoration:none;
 font-weight:bold;
-transition:0.3s;
 position:relative;
 }
 
@@ -103,44 +98,38 @@ nav a:hover::after{
 width:100%;
 }
 
-/* ===== CONTENEDOR ===== */
 .container{
 width:90%;
 max-width:1200px;
 margin:2em auto;
 }
 
-/* ===== INTRO ===== */
 .intro-section{
-background:rgba(255,255,255,0.9);
+background:rgba(255,255,255,0.92);
 padding:2em;
-border-radius:15px;
+border-radius:20px;
 text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
 margin-bottom:3em;
-animation: fadeUp 1.2s ease;
 }
 
 .intro-section img{
 max-width:100%;
-border-radius:10px;
+border-radius:15px;
 margin-top:1em;
 }
 
-/* ===== GRID ===== */
 .transport-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:2em;
 }
 
-/* ===== TARJETAS ===== */
 .transport-card{
-background:rgba(255,255,255,0.85);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.88);
 border-radius:20px;
 padding:1.5em;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
+box-shadow:0 15px 30px rgba(0,0,0,0.25);
 transition:0.4s;
 opacity:0;
 transform:translateY(40px);
@@ -148,7 +137,6 @@ transform:translateY(40px);
 
 .transport-card:hover{
 transform:scale(1.05);
-box-shadow:0 15px 35px rgba(0,0,0,0.3);
 }
 
 .transport-card h3{
@@ -159,7 +147,7 @@ color:var(--azul1);
 
 .transport-card img{
 width:100%;
-border-radius:10px;
+border-radius:15px;
 margin-bottom:1em;
 }
 
@@ -176,14 +164,13 @@ margin-top:1em;
 font-weight:600;
 }
 
-/* ===== LINKS ===== */
 .links-section{
-background:rgba(255,255,255,0.9);
+background:rgba(255,255,255,0.92);
 padding:2em;
-border-radius:15px;
+border-radius:20px;
 margin-top:3em;
 text-align:center;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
 }
 
 .links-section ul{
@@ -212,18 +199,12 @@ text-decoration:none;
 font-weight:bold;
 }
 
-/* ===== FOOTER ===== */
 footer{
 text-align:center;
 padding:1.5em;
 color:white;
 margin-top:3em;
-background:rgba(0,0,0,0.5);
-}
-
-/* ===== ANIMACIÓN SCROLL ===== */
-@keyframes fadeUp{
-to{opacity:1;transform:translateY(0)}
+background:rgba(0,0,0,0.6);
 }
 
 </style>
@@ -253,107 +234,93 @@ to{opacity:1;transform:translateY(0)}
 <section class="intro-section">
 <h2>¿Sabías que tu forma de moverte impacta el medio ambiente?</h2>
 <p>En la Ciudad de México, tenemos muchas opciones de transporte que son amigables con la naturaleza y que te ayudan a cuidar nuestro aire y reducir el ruido.</p>
-<img src="https://img.freepik.com/vector-gratis/conjunto-transporte-publico-electico-ecologico-plano-scooter-bicicleta-ciudad-moderna_88138-1810.jpg">
-  </section>
+<img src="https://img.freepik.com/vector-gratis/conjunto-transporte-publico-electrico-ecologico-plano-scooter-bicicleta-ciudad-moderna_88138-1810.jpg">
+</section>
 
-        <section class="transport-grid">
-            <div class="transport-card">
-                <h3>Metro</h3>
-	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png/1024px-NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png"/>
-                <ul>
-                    <li>**Horarios:** Lunes a viernes de 5:00 a 24:00 hrs, sábados de 6:00 a 24:00 hrs y domingos/días festivos de 7:00 a 24:00 hrs.</li>
-                    <li>**Rutas:** Amplia red de 12 líneas que conectan casi toda la ciudad. Es uno de los sistemas más eficientes y de mayor cobertura.</li>
-                    <li>**Costo:** $5.00 MXN por viaje.</li>
-                    <li>**Pago:** Exclusivamente con la Tarjeta de Movilidad Integrada (MI).</li>
-                </ul>
-                <p>El Metro es uno de los pilares del transporte sustentable, moviendo a millones de personas diariamente y reduciendo la necesidad de usar autos.</p>
-            </div>
+<section class="transport-grid">
 
-            <div class="transport-card">
-                <h3>Metrobús</h3>
+<!-- METRO -->
+<div class="transport-card">
+<h3>Metro</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png/1024px-NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png"/>
+<ul>
+<li><strong>Horarios:</strong> Lunes a viernes de 5:00 a 24:00 hrs, sábados de 6:00 a 24:00 hrs y domingos/días festivos de 7:00 a 24:00 hrs.</li>
+<li><strong>Rutas:</strong> 12 líneas que conectan gran parte de la ciudad.</li>
+<li><strong>Costo:</strong> $5.00 MXN por viaje.</li>
+<li><strong>Pago:</strong> Tarjeta de Movilidad Integrada (MI).</li>
+</ul>
+<p>El Metro mueve millones de personas diariamente reduciendo el uso del automóvil.</p>
+</div>
+
+<!-- METROBÚS -->
+<div class="transport-card">
+<h3>Metrobús</h3>
 <img src="https://cdn.unotv.com/images/2025/05/como-esta-el-servicio-del-metrobus-por-movilizaciones-de-la-cnte-en-cdmx-093427.jpg"/>
-                <ul>
-                    <li>**Horarios:** Lunes a sabado de 4:30 a 24:00 hrs, domingos/días festivos de 5:00 a 24:00 hrs.</li>
-                    <li>**Rutas:** Cuenta con 7 líneas y más de 200 estaciones, conectando puntos clave de la ciudad con carriles exclusivos que lo hacen rápido y eficiente.</li>
-                    <li>**Costo:** $6.00 MXN por viaje.</li>
-                    <li>**Pago:** Exclusivamente con la Tarjeta de Movilidad Integrada (MI).</li>
-                </ul>
-                <p>Usa autobuses de bajas emisiones, lo que ayuda a mejorar la calidad del aire en la CDMX.</p>
-            </div>
+<ul>
+<li><strong>Horarios:</strong> Lunes a sábado de 4:30 a 24:00 hrs, domingos de 5:00 a 24:00 hrs.</li>
+<li><strong>Rutas:</strong> 7 líneas y más de 200 estaciones.</li>
+<li><strong>Costo:</strong> $6.00 MXN por viaje.</li>
+<li><strong>Pago:</strong> Tarjeta MI.</li>
+</ul>
+<p>Opera con carriles exclusivos y autobuses de bajas emisiones.</p>
+</div>
 
-            <div class="transport-card">
-                <h3>Trolebús</h3>
+<!-- TROLEBÚS -->
+<div class="transport-card">
+<h3>Trolebús</h3>
 <img src="https://elceo.com/wp-content/uploads/2025/05/trolebus-elevado-asi-es-como-operara-el-nuevo-sistema-de-transporte-en-la-cdmx.jpg"/>
-                <ul>
-                    <li>**Horarios:** Dependiendo de la línea, generalmente de 5:00 a 24:00 hrs. Algunas líneas operan las 24 horas.</li>
-                    <li>**Rutas:** Dispone de varias líneas eléctricas, muchas de ellas complementarias a las del Metro y Metrobús, como el Trolebús Elevado.</li>
-                    <li>**Costo:** Varía entre $4.00 y $7.00 MXN, según la línea y el tipo de servicio (por ejemplo, Trolebús Elevado).</li>
-                    <li>**Pago:** Principalmente con la Tarjeta de Movilidad Integrada (MI). Algunas líneas pueden aceptar efectivo.</li>
-                </ul>
-                <p>Vehículos 100% eléctricos, no generan contaminación ni ruido, ¡ideales para un ambiente más limpio!</p>
-            </div>
+<ul>
+<li><strong>Horarios:</strong> Generalmente de 5:00 a 24:00 hrs.</li>
+<li><strong>Rutas:</strong> Varias líneas eléctricas.</li>
+<li><strong>Costo:</strong> Entre $4.00 y $7.00 MXN.</li>
+<li><strong>Pago:</strong> Tarjeta MI.</li>
+</ul>
+<p>Es 100% eléctrico y no genera emisiones contaminantes.</p>
+</div>
 
-            <div class="transport-card">
-                <h3>Cablebús</h3>
-	<img src="https://oem.com.mx/la-prensa/img/15558006/1654529028/BASE_LANDSCAPE/1200/image.webp"/>
-                <ul>
-                    <li>**Horarios:** Lunes a viernes de 5:00 a 23:00 hrs, sábados de 6:00 a 23:00 hrs y domingos/días festivos de 7:00 a 23:00 hrs.</li>
-                    <li>**Rutas:** Actualmente cuenta con 2 líneas (Línea 1 Cuautepec-Indios Verdes y Línea 2 Santa Marta-Constitución de 1917) que conectan zonas altas de la ciudad.</li>
-                    <li>**Costo:** $7.00 MXN por viaje.</li>
-                    <li>**Pago:** Exclusivamente con la Tarjeta de Movilidad Integrada (MI).</li>
-                </ul>
-                <p>Ofrece vistas increíbles y es una forma ecológica de llegar a zonas elevadas, reduciendo el tráfico en las calles.</p>
-            </div>
+<!-- CABLEBÚS -->
+<div class="transport-card">
+<h3>Cablebús</h3>
+<img src="https://oem.com.mx/la-prensa/img/15558006/1654529028/BASE_LANDSCAPE/1200/image.webp"/>
+<ul>
+<li><strong>Horarios:</strong> Lunes a viernes 5:00 a 23:00 hrs.</li>
+<li><strong>Rutas:</strong> 2 líneas principales.</li>
+<li><strong>Costo:</strong> $7.00 MXN.</li>
+<li><strong>Pago:</strong> Tarjeta MI.</li>
+</ul>
+<p>Reduce tráfico en zonas altas y ofrece vistas increíbles.</p>
+</div>
 
-            <div class="transport-card">
-                <h3>Ecobici</h3>
-	<img src="https://ciudadanosenred.com.mx/wp-content/uploads/2023/10/como-pagar-la-ecobici-cdmx-2023.jpeg"/>
-                <ul>
-                    <li>**Horarios:** De 5:00 a 00:30, los 365 días del año.</li>
-                    <li>**Rutas:** Extensa red de cicloestaciones en áreas céntricas y de alta afluencia de la ciudad. Puedes consultarlas en su aplicación.</li>
-                    <li>**Costo:** Planes de renta por día, semana, mes o año. Por ejemplo, el plan de 24 horas cuesta $129 MXN (precios pueden variar).</li>
-                    <li>**Pago:** Con tarjeta de crédito o débito al registrarte.</li>
-                    <li>**Requisitos o Recomendaciones:**
-                        <ul>
-                            <li>Ser mayor de 16 años.</li>
-                            <li>Registrarte en su sitio web o app con una tarjeta de crédito/débito vigente.</li>
-                            <li>Usar casco siempre es recomendable para tu seguridad.</li>
-                            <li>Respeta las señales de tránsito y a los peatones.</li>
-                            <li>¡Diviértete explorando la ciudad de forma saludable y ecológica!</li>
-                        </ul>
-                    </li>
-                </ul>
-                <p>Perfecta para distancias cortas y medianas, te ayuda a mantenerte activo y a cuidar el medio ambiente al mismo tiempo.</p>
-            </div>
-        </section>
-        <li></li>
-        <section class="transport-grid">
-            <div class="transport-card">
-                <img src="https://metro.cdmx.gob.mx/storage/app/media/lared/MAPA_MI_3V.png"
-                
-            </div>
+<!-- ECOBICI -->
+<div class="transport-card">
+<h3>Ecobici</h3>
+<img src="https://ciudadanosenred.com.mx/wp-content/uploads/2023/10/como-pagar-la-ecobici-cdmx-2023.jpeg"/>
+<ul>
+<li><strong>Horarios:</strong> 5:00 a 00:30 todo el año.</li>
+<li><strong>Planes:</strong> Día, semana, mes o año.</li>
+<li><strong>Costo ejemplo:</strong> $129 MXN 24 horas.</li>
+<li><strong>Requisitos:</strong> Ser mayor de 16 años.</li>
+</ul>
+<p>Ideal para distancias cortas y promover actividad física.</p>
+</div>
 
 </section>
 
 <section class="links-section">
-<h2>Recursos Adicionales para Moverte Verde</h2>
+<h2>Recursos Oficiales</h2>
 <ul>
-<li><a href="https://www.metro.cdmx.gob.mx/" target="_blank">Sitio Oficial Metro CDMX</a></li>
-<li><a href="https://www.metrobus.cdmx.gob.mx/" target="_blank">Sitio Oficial Metrobús CDMX</a></li>
-<li><a href="https://www.ste.cdmx.gob.mx/red-de-transporte/lineas-de-trolebus" target="_blank">Sitio Oficial Trolebús CDMX</a></li>
-<li><a href="https://www.ste.cdmx.gob.mx/red-de-transporte/cablebus" target="_blank">Sitio Oficial Cablebús CDMX</a></li>
-<li><a href="https://www.ecobici.cdmx.gob.mx/" target="_blank">Sitio Oficial Ecobici CDMX</a></li>
-<li><a href="https://www.semovi.cdmx.gob.mx/movilidad-integrada/tarjeta-de-movilidad-integrada" target="_blank">Tarjeta de Movilidad Integrada (MI)</a></li>
-<li><a href="https://play.google.com/store/apps/details?id=mx.gob.cdmx.app_movilidad&hl=es_MX" target="_blank">App CDMX (Google Play)</a></li>
-<li><a href="https://apps.apple.com/mx/app/app-cdmx/id1273902361" target="_blank">App CDMX (App Store)</a></li>
-<li><a href="https://www.ecobici.cdmx.gob.mx/mapa-de-cicloestaciones/" target="_blank">Mapa de Cicloestaciones Ecobici</a></li>
+<li><a href="https://www.metro.cdmx.gob.mx/" target="_blank">Metro CDMX</a></li>
+<li><a href="https://www.metrobus.cdmx.gob.mx/" target="_blank">Metrobús CDMX</a></li>
+<li><a href="https://www.ste.cdmx.gob.mx/red-de-transporte/lineas-de-trolebus" target="_blank">Trolebús CDMX</a></li>
+<li><a href="https://www.ste.cdmx.gob.mx/red-de-transporte/cablebus" target="_blank">Cablebús CDMX</a></li>
+<li><a href="https://www.ecobici.cdmx.gob.mx/" target="_blank">Ecobici CDMX</a></li>
 </ul>
 </section>
 
 </div>
 
 <footer>
-<p>&copy; 2025 Movilidad Sustentable, EST 06. ¡Cuida tu ciudad, muévete inteligentemente!</p>
+<p>&copy; 2025 Movilidad Sustentable, EST 06. ¡Cuida tu ciudad!</p>
 </footer>
 
 <script>
@@ -362,7 +329,9 @@ window.addEventListener("scroll",()=>{
 cards.forEach(card=>{
 const top=card.getBoundingClientRect().top;
 if(top<window.innerHeight-100){
-card.style.animation="fadeUp 1s forwards";
+card.style.opacity=1;
+card.style.transform="translateY(0)";
+card.style.transition="1s";
 }
 });
 });
@@ -370,6 +339,3 @@ card.style.animation="fadeUp 1s forwards";
 
 </body>
 </html>
-
-
-
