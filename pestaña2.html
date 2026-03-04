@@ -6,6 +6,32 @@
     <title>Preguntas frecuentes</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        nav {
+    background-color: var(--color-verde-oscuro);
+    padding: 0.8em 0;
+    }
+
+    nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    }
+
+    nav ul li a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+    color: var(--color-azul-claro);
+    }
+        
         :root {
             --color-verde-oscuro: #2e7d32;
             --color-verde-medio: #4caf50;
@@ -197,7 +223,16 @@
         <h2>¡Muévete Verde en la CDMX!</h2>
         <p>Descubre los transportes que cuidan tu ciudad y el planeta</p>
     </header>
-
+    <nav>
+    <ul>
+        <li><a href="https://esme9726tapia-alt.github.io/ruta_sustentable/index.html">Inicio</a></li>
+        <li><a href="https://esme9726tapia-alt.github.io/ruta_sustentable/pesta%C3%B1a2.html">Preguntas Frecuentes</a></li>
+        <li><a href="metrobus.html">Metrobús</a></li>
+        <li><a href="trolebus.html">Trolebús</a></li>
+        <li><a href="cablebus.html">Cablebús</a></li>
+        <li><a href="ecobici.html">Ecobici</a></li>
+    </ul>
+    </nav>
     <div class="container">
 
         <section class="faq-section">
@@ -282,4 +317,5 @@
         <p>&copy; 2025 Movilidad Sustentable CDMX. ¡Cuida tu ciudad, muévete inteligentemente!</p>
     </footer>
 </body>
+
 </html>
