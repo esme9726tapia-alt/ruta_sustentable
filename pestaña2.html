@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas frecuentes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-verde-oscuro: #2e7d32;
+            --color-verde-medio: #4caf50;
+            --color-verde-claro: #81c784;
+            --color-azul-oscuro: #1976d2;
+            --color-azul-medio: #2196f3;
+            --color-azul-claro: #90caf9;
+            --color-blanco: #ffffff;
+            --color-gris-texto: #333333;
+            --color-gris-fondo: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-gris-fondo);
+            color: var(--color-gris-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--color-verde-medio), var(--color-azul-medio));
+            color: var(--color-blanco);
+            padding: 2.5em 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            margin-bottom: 0.2em;
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2em auto;
+            padding: 1.5em;
+            background-color: var(--color-blanco);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-section, .faq-section, .gallery-section {
+            text-align: center;
+            margin-bottom: 3em;
+            padding-bottom: 2em;
+            border-bottom: 1px dashed var(--color-verde-claro); /* Usamos verde para la intro y FAQ */
+        }
+
+        .intro-section h2, .faq-section h2, .gallery-section h2 {
+            color: var(--color-verde-oscuro);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            margin-bottom: 0.8em;
+        }
+
+        /* Estilos para FAQ */
+        .faq-item {
+            background-color: var(--color-gris-fondo);
+            border-radius: 8px;
+            padding: 1.2em 1.5em;
+            margin-bottom: 1em;
+            text-align: left;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+
+        .faq-item h3 {
+            color: var(--color-azul-oscuro);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3em;
+            margin-top: 0;
+            margin-bottom: 0.5em;
+        }
+
+        .faq-item p {
+            font-size: 1em;
+            color: var(--color-gris-texto);
+        }
+
+        /* Estilos para Galería */
+        .gallery-section {
+            border-bottom: 1px dashed var(--color-azul-claro); /* Usamos azul para la galería */
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5em;
+            margin-top: 2em;
+        }
+
+        .gallery-item {
+            background-color: var(--color-gris-fondo);
+            border-radius: 8px;
+            overflow: hidden; /* Para que la imagen no se salga del borde redondeado */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px; /* Altura fija para las imágenes */
+            object-fit: cover; /* Recorta la imagen para que cubra el espacio */
+            display: block; /* Elimina espacios extra debajo de la imagen */
+            border-bottom: 3px solid var(--color-verde-medio); /* Borde decorativo */
+        }
+
+        .gallery-item p {
+            padding: 1em;
+            margin: 0;
+            font-size: 0.9em;
+            color: var(--color-gris-texto);
+            text-align: center;
+        }
+
+
+        .links-section {
+            margin-top: 3em;
+            text-align: center;
+            border-top: 1px dashed var(--color-azul-claro);
+            padding-top: 2em;
+        }
+
+        .links-section h2 {
+            color: var(--color-azul-oscuro);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+
+        .links-section ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5em;
+        }
+
+        .links-section ul li {
+            background-color: var(--color-azul-claro);
+            border-radius: 5px;
+            padding: 0.8em 1.5em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .links-section ul li a {
+            color: var(--color-blanco);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .links-section ul li:hover {
+            background-color: var(--color-azul-oscuro);
+        }
+
+        .footer {
+            background-color: var(--color-verde-oscuro);
+            color: var(--color-blanco);
+            text-align: center;
+            padding: 1.5em 0;
+            margin-top: 3em;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RUTA SUSTENTABLE</h1>
+        <h2>¡Muévete Verde en la CDMX!</h2>
+        <p>Descubre los transportes que cuidan tu ciudad y el planeta</p>
+    </header>
+
+    <div class="container">
+
+        <section class="faq-section">
+            <h2>Preguntas Frecuentes (FAQ) sobre el Transporte Sustentable</h2>
+            <p>¿Tienes dudas? Aquí resolvemos algunas de las preguntas más comunes.</p>
+
+            <div class="faq-item">
+                <h3>¿Qué es la Tarjeta de Movilidad Integrada (MI) y para qué sirve?</h3>
+                <p>La **Tarjeta de Movilidad Integrada (MI)** es un medio de pago unificado que te permite acceder a diversos sistemas de transporte público de la CDMX, como el Metro, Metrobús, Trolebús, Cablebús, Tren Ligero y RTP. Es muy práctica porque no necesitas comprar boletos diferentes para cada uno.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>¿Cómo puedo recargar mi Tarjeta de Movilidad Integrada?</h3>
+                <p>Puedes recargar tu Tarjeta MI en las taquillas del Metro, máquinas expendedoras en estaciones de Metro y Metrobús, tiendas de conveniencia (OXXO, 7-Eleven, etc.), y a través de la aplicación de la Ciudad de México con tu celular y NFC.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>¿Es seguro viajar en Ecobici?</h3>
+                <p>¡Sí, es seguro si sigues las reglas! Ecobici es un sistema diseñado para la movilidad urbana. Es fundamental usar casco (¡siempre es buena idea!), respetar las señales de tránsito, usar las ciclovías disponibles y estar atento al tráfico. Recuerda que compartes la calle con otros vehículos y peatones.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>¿Por qué se dice que estos transportes son "sustentables" o "ecológicos"?</h3>
+                <p>Se les llama así porque su funcionamiento genera menos contaminación que los vehículos particulares de combustión. Por ejemplo, el Metro y Trolebús son eléctricos y no emiten gases de efecto invernadero directamente. El Metrobús, aunque usa combustible, transporta a muchísimas personas en menos vehículos, reduciendo la congestión y las emisiones por persona. Usarlos ayuda a tener un aire más limpio en la ciudad.</p>
+            </div>
+            </section>
+
+        <section class="gallery-section">
+            <h2>Galería: La Movilidad del Futuro en la CDMX</h2>
+            <p>Descubre en imágenes cómo se ve el transporte sustentable en nuestra ciudad.</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://tvazteca.brightspotcdn.com/3d/fd/b5c327824bf3ba89eb729d7b086a/estaciones-peligrosas-metro-cdmx.jpg" alt="El metro">
+                    <p>El metro: Conectando la ciudad de extremo a extremo.</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Metrob%C3%BAs_Preparatoria_1.jpg" alt="Descripción de la imagen 2">
+                    <p>Metrobús: Eficiencia en carriles exclusivos.</p>
+                </div>
+                <div class="gallery-item">
+
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Troleb%C3%BAs_de_la_Ciudad_de_M%C3%A9xico.jpg" alt="Descripción de la imagen 3">
+                    <p>Trolebús: Movilidad limpia y silenciosa.</p>
+                </div>
+                <div class="gallery-item">
+
+                    <img src="https://www.excelsior.com.mx/media/pictures/2024/09/24/3184821.jpg" alt="Descripción de la imagen 4">
+                    <p>Cablebús: Vistas aéreas y acceso a nuevas zonas.</p>
+                </div>
+                <div class="gallery-item">
+
+                    <img src="https://pbs.twimg.com/media/FZQ4CK2WIAE7MD8?format=jpg&name=4096x4096" alt="Descripción de la imagen 5">
+                    <p>Ecobici: Pedaleando por una ciudad más sana.</p>
+                </div>
+                <div class="gallery-item">
+
+                    <img src="https://www.excelsior.com.mx/770x580/filters:format(webp):quality(75)/media/pictures/2024/03/22/3092034.jpg" alt="Descripción de la imagen 6">
+                    <p>La Tarjeta MI: Tu llave para toda la red.</p>
+                </div>
+                </div>
+        </section>
+
+        <section class="links-section">
+            <h2>Recursos Adicionales para Moverte Verde</h2>
+            <ul>
+                <li><a href="https://www.metro.cdmx.gob.mx/" target="_blank">Sitio Oficial Metro CDMX</a></li>
+                <li><a href="https://www.metrobus.cdmx.gob.mx/" target="_blank">Sitio Oficial Metrobús CDMX</a></li>
+                <li><a href="https://www.ste.cdmx.gob.mx/red-de-transporte/lineas-de-trolebus" target="_blank">Sitio Oficial Trolebús CDMX</a></li>
+                <li><a href="https://www.ste.cdmx.gob.mx/red-de-transporte/cablebus" target="_blank">Sitio Oficial Cablebús CDMX</a></li>
+                <li><a href="https://www.ecobici.cdmx.gob.mx/" target="_blank">Sitio Oficial Ecobici CDMX</a></li>
+                <li><a href="https://www.semovi.cdmx.gob.mx/movilidad-integrada/tarjeta-de-movilidad-integrada" target="_blank">Tarjeta de Movilidad Integrada (MI)</a></li>
+                <li><a href="https://play.google.com/store/apps/details?id=mx.gob.cdmx.app_movilidad&hl=es_MX" target="_blank">App CDMX (Google Play)</a></li>
+                <li><a href="https://apps.apple.com/mx/app/app-cdmx/id1273902361" target="_blank">App CDMX (App Store)</a></li>
+                 <li><a href="https://www.ecobici.cdmx.gob.mx/mapa-de-cicloestaciones/" target="_blank">Mapa de Cicloestaciones Ecobici</a></li>
+            </ul>
+            <p>¡Descarga las apps oficiales para planear tus viajes y tener la información a la mano!</p>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Movilidad Sustentable CDMX. ¡Cuida tu ciudad, muévete inteligentemente!</p>
+    </footer>
+</body>
+</html>
