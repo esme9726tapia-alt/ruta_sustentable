@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conclusiones - Ruta Sustentable</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--verde1:#1b5e20;
+--verde2:#2e7d32;
+--verde3:#4caf50;
+--azul1:#0d47a1;
+--azul2:#1976d2;
+--azul3:#42a5f5;
+--blanco:#ffffff;
+}
+
+body{
+margin:0;
+font-family:'Open Sans',sans-serif;
+background: linear-gradient(-45deg,#1b5e20,#1976d2,#2e7d32,#42a5f5);
+background-size:400% 400%;
+animation:fondo 15s ease infinite;
+color:white;
+}
+
+@keyframes fondo{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+header{
+text-align:center;
+padding:3em 1em;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+header h1{
+font-family:'Montserrat';
+font-weight:900;
+font-size:3em;
+letter-spacing:2px;
+}
+
+header p{
+opacity:0.9;
+}
+
+.container{
+width:90%;
+max-width:1100px;
+margin:3em auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:2em;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.2);
+border-radius:20px;
+padding:2em;
+backdrop-filter:blur(10px);
+box-shadow:0 0 25px rgba(0,0,0,0.3);
+transition:all 0.4s ease;
+opacity:0;
+transform:translateY(40px);
+}
+
+.card.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 0 30px rgba(66,165,245,0.7);
+}
+
+.card h2{
+font-family:'Montserrat';
+color:#90caf9;
+margin-top:0;
+}
+
+.card p{
+line-height:1.6;
+}
+
+.icon{
+font-size:35px;
+margin-bottom:10px;
+}
+
+.boton{
+display:inline-block;
+margin-top:30px;
+padding:12px 25px;
+background:linear-gradient(45deg,#42a5f5,#4caf50);
+color:white;
+text-decoration:none;
+font-weight:bold;
+border-radius:30px;
+transition:0.3s;
+}
+
+.boton:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px #42a5f5;
+}
+
+.footer{
+margin-top:50px;
+text-align:center;
+padding:1.5em;
+background:rgba(0,0,0,0.5);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Resultados del Proyecto</h1>
+<p>Ruta Sustentable | Feria de Ciencia y Tecnología</p>
+</header>
+
+<div class="container">
+
+<div class="card fade">
+<div class="icon">🧭</div>
+<h2>Problema</h2>
+<p>
+Nuestro proyecto busca que la gente conozca más rutas de transporte en la ciudad.
+Muchas personas utilizan automóvil porque no saben qué otras opciones existen.
+</p>
+</div>
+
+<div class="card fade">
+<div class="icon">❓</div>
+<h2>Pregunta</h2>
+<p>
+La contaminación es un problema importante en la ciudad.
+Por eso investigamos cómo el uso de transportes sustentables puede ayudar a reducir la contaminación.
+</p>
+</div>
+
+<div class="card fade">
+<div class="icon">🔬</div>
+<h2>Hipótesis</h2>
+<p>
+Entre más personas utilicen transportes sustentables como metro, metrobús,
+trolebús o bicicleta, habrá menos contaminación y menos contingencias ambientales.
+</p>
+</div>
+
+<div class="card fade">
+<div class="icon">📊</div>
+<h2>Resultados</h2>
+<p>
+Durante nuestra investigación descubrimos que existen más de 50 rutas diferentes
+de transporte público en la Ciudad de México.
+Esto demuestra que hay muchas alternativas para moverse sin automóvil particular.
+</p>
+</div>
+
+<div class="card fade">
+<div class="icon">🌎</div>
+<h2>Conclusión</h2>
+<p>
+Es importante que más personas utilicen transporte público y sustentable,
+porque ayuda a reducir la contaminación,
+mejora la movilidad y contribuye al cuidado del medio ambiente.
+</p>
+</div>
+
+</div>
+
+<div style="text-align:center;">
+<a href="index.html" class="boton">Volver al inicio</a>
+</div>
+
+<div class="footer">
+<p>© 2025 Proyecto Ruta Sustentable | Escuela Secundaria Técnica 06</p>
+</div>
+
+<script>
+
+const cards=document.querySelectorAll('.card');
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+}
+});
+});
+
+cards.forEach(card=>{
+observer.observe(card);
+});
+
+</script>
+
+</body>
+</html>
