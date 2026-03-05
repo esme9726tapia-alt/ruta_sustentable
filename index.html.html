@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>RUTA SUSTENTABLE</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
@@ -11,50 +10,52 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-
 :root {
---color-verde-oscuro: #2e7d32;
---color-verde-medio: #4caf50;
---color-verde-claro: #81c784;
---color-azul-oscuro: #1976d2;
---color-azul-medio: #2196f3;
---color-azul-claro: #90caf9;
---color-blanco: #ffffff;
---color-gris-texto: #333333;
---color-gris-fondo: #f4f4f4;
+--color-verde-oscuro:#2e7d32;
+--color-verde-medio:#4caf50;
+--color-verde-claro:#81c784;
+--color-azul-oscuro:#1976d2;
+--color-azul-medio:#2196f3;
+--color-azul-claro:#90caf9;
+--color-blanco:#ffffff;
+--color-gris-texto:#333333;
+--color-gris-fondo:#f4f4f4;
 }
 
 body{
 font-family:'Open Sans',sans-serif;
 margin:0;
-background:var(--color-gris-fondo);
+padding:0;
+background-color:var(--color-gris-fondo);
 color:var(--color-gris-texto);
+line-height:1.6;
 }
 
 header{
 background:linear-gradient(to right,var(--color-verde-medio),var(--color-azul-medio));
-color:white;
-text-align:center;
+color:var(--color-blanco);
 padding:2.5em 0;
+text-align:center;
 box-shadow:0 4px 8px rgba(0,0,0,0.2);
 }
 
 header h1{
 font-family:'Montserrat',sans-serif;
 font-size:2.8em;
+margin-bottom:0.2em;
 }
 
 header p{
 font-size:1.3em;
-opacity:.9;
+opacity:0.9;
 }
 
 .container{
 width:90%;
 max-width:1200px;
 margin:2em auto;
-background:white;
 padding:1.5em;
+background-color:var(--color-blanco);
 border-radius:10px;
 box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
@@ -70,6 +71,7 @@ border-bottom:1px dashed var(--color-verde-claro);
 color:var(--color-verde-oscuro);
 font-family:'Montserrat',sans-serif;
 font-size:2em;
+margin-bottom:0.8em;
 }
 
 .transport-grid{
@@ -79,11 +81,14 @@ gap:2em;
 }
 
 .transport-card{
-background:var(--color-gris-fondo);
+background-color:var(--color-gris-fondo);
 border-radius:8px;
 padding:1.5em;
 box-shadow:0 2px 5px rgba(0,0,0,0.08);
-transition:.3s;
+transition:transform 0.3s ease;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
 }
 
 .transport-card:hover{
@@ -93,16 +98,20 @@ transform:translateY(-5px);
 .transport-card h3{
 font-family:'Montserrat',sans-serif;
 color:var(--color-azul-oscuro);
+margin-top:0;
+margin-bottom:0.8em;
+font-size:1.6em;
 text-align:center;
 }
 
 .transport-card ul{
 list-style:none;
 padding:0;
+margin:0.5em 0;
 }
 
 .transport-card ul li{
-margin-bottom:.5em;
+margin-bottom:0.5em;
 padding-left:1.5em;
 position:relative;
 }
@@ -111,11 +120,17 @@ position:relative;
 content:'🌿';
 position:absolute;
 left:0;
+color:var(--color-verde-medio);
+}
+
+.transport-card p{
+font-size:0.95em;
 }
 
 .transport-card img{
 width:100%;
 border-radius:6px;
+margin-bottom:10px;
 }
 
 .links-section{
@@ -125,40 +140,50 @@ border-top:1px dashed var(--color-azul-claro);
 padding-top:2em;
 }
 
+.links-section h2{
+color:var(--color-azul-oscuro);
+font-family:'Montserrat',sans-serif;
+font-size:2em;
+margin-bottom:1em;
+}
+
 .links-section ul{
 list-style:none;
+padding:0;
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:1em;
-padding:0;
+gap:1.5em;
 }
 
 .links-section ul li{
-background:var(--color-azul-claro);
-padding:.8em 1.2em;
-border-radius:6px;
+background-color:var(--color-azul-claro);
+border-radius:5px;
+padding:0.8em 1.5em;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 
 .links-section ul li a{
-color:white;
+color:var(--color-blanco);
 text-decoration:none;
 font-weight:bold;
+font-size:1.1em;
 }
 
 .links-section ul li:hover{
-background:var(--color-azul-oscuro);
+background-color:var(--color-azul-oscuro);
 }
 
 .footer{
-background:var(--color-verde-oscuro);
-color:white;
+background-color:var(--color-verde-oscuro);
+color:var(--color-blanco);
 text-align:center;
-padding:1.5em;
+padding:1.5em 0;
 margin-top:3em;
+font-size:0.9em;
 }
 
-.grafica-section{
+.grafica{
 margin-top:40px;
 text-align:center;
 }
@@ -167,7 +192,6 @@ canvas{
 max-width:700px;
 margin:auto;
 }
-
 </style>
 </head>
 
@@ -179,241 +203,131 @@ margin:auto;
 <p>Descubre los transportes que cuidan tu ciudad y el planeta</p>
 </header>
 
-
 <div class="container">
 
 <section class="intro-section">
-
 <h2>¿Sabías que tu forma de moverte impacta el medio ambiente?</h2>
+<p>En la Ciudad de México, tenemos muchas opciones de transporte que son amigables con la naturaleza y que te ayudan a cuidar nuestro aire y reducir el ruido. ¡Conocerlas es el primer paso para ser un ciudadano responsable!</p>
+<p>Aquí te presentamos algunos de los transportes sustentables más importantes para que los conozcas, valores y uses inteligentemente.</p>
 
-<p>
-En la Ciudad de México, tenemos muchas opciones de transporte que son amigables con la naturaleza y que te ayudan a cuidar nuestro aire y reducir el ruido. ¡Conocerlas es el primer paso para ser un ciudadano responsable!
-</p>
-
-<p>
-Aquí te presentamos algunos de los transportes sustentables más importantes para que los conozcas, valores y uses inteligentemente.
-</p>
-
-<img src="https://img.freepik.com/vector-gratis/conjunto-transporte-publico-electrico-ecologico-plano-scooter-bicicleta-ciudad-moderna_88138-1810.jpg">
-
+<img src="https://img.freepik.com/vector-gratis/conjunto-transporte-publico-electrico-ecologico-plano-scooter-bicicleta-ciudad-moderna_88138-1810.jpg"/>
 </section>
-
 
 <section class="transport-grid">
 
 <div class="transport-card">
-
 <h3>Metro</h3>
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png/1024px-NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png">
-
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png/1024px-NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png"/>
 <ul>
-
-<li>Horarios: Lunes a viernes de 5:00 a 24:00 hrs</li>
-
-<li>Rutas: 12 líneas que conectan la ciudad</li>
-
-<li>Costo: $5.00 MXN</li>
-
-<li>Pago: Tarjeta de Movilidad Integrada</li>
-
+<li><b>Horarios:</b> Lunes a viernes de 5:00 a 24:00 hrs.</li>
+<li><b>Rutas:</b> 12 líneas que conectan gran parte de la ciudad.</li>
+<li><b>Costo:</b> $5.00 MXN.</li>
+<li><b>Pago:</b> Tarjeta de Movilidad Integrada.</li>
 </ul>
-
-<p>El Metro es uno de los pilares del transporte sustentable.</p>
-
+<p>El Metro mueve a millones de personas diariamente reduciendo el uso de automóviles.</p>
 </div>
 
-
 <div class="transport-card">
-
 <h3>Metrobús</h3>
-
-<img src="https://cdn.unotv.com/images/2025/05/como-esta-el-servicio-del-metrobus-por-movilizaciones-de-la-cnte-en-cdmx-093427.jpg">
-
+<img src="https://cdn.unotv.com/images/2025/05/como-esta-el-servicio-del-metrobus-por-movilizaciones-de-la-cnte-en-cdmx-093427.jpg"/>
 <ul>
-
-<li>Horarios: 4:30 a 24:00</li>
-
-<li>7 líneas con carriles exclusivos</li>
-
-<li>Costo: $6 MXN</li>
-
-<li>Pago: Tarjeta MI</li>
-
+<li>Cuenta con 7 líneas.</li>
+<li>Carriles exclusivos.</li>
+<li>Costo: $6 MXN.</li>
 </ul>
-
-<p>Reduce emisiones contaminantes.</p>
-
+<p>Reduce emisiones y mejora la movilidad urbana.</p>
 </div>
 
-
 <div class="transport-card">
-
 <h3>Trolebús</h3>
-
-<img src="https://elceo.com/wp-content/uploads/2025/05/trolebus-elevado-asi-es-como-operara-el-nuevo-sistema-de-transporte-en-la-cdmx.jpg">
-
+<img src="https://elceo.com/wp-content/uploads/2025/05/trolebus-elevado-asi-es-como-operara-el-nuevo-sistema-de-transporte-en-la-cdmx.jpg"/>
 <ul>
-
-<li>Transporte eléctrico</li>
-
-<li>No genera contaminación</li>
-
-<li>Costo $4-$7</li>
-
+<li>Vehículos eléctricos.</li>
+<li>No producen emisiones directas.</li>
+<li>Complementa Metro y Metrobús.</li>
 </ul>
-
-<p>Ideal para reducir ruido y contaminación.</p>
-
+<p>Es uno de los sistemas más ecológicos.</p>
 </div>
 
-
 <div class="transport-card">
-
 <h3>Cablebús</h3>
-
-<img src="https://oem.com.mx/la-prensa/img/15558006/1654529028/BASE_LANDSCAPE/1200/image.webp">
-
+<img src="https://oem.com.mx/la-prensa/img/15558006/1654529028/BASE_LANDSCAPE/1200/image.webp"/>
 <ul>
-
-<li>2 líneas principales</li>
-
-<li>Conecta zonas altas</li>
-
-<li>Costo $7 MXN</li>
-
+<li>Conecta zonas altas.</li>
+<li>Reduce tiempo de traslado.</li>
+<li>Costo: $7 MXN.</li>
 </ul>
-
-<p>Reduce tráfico y tiempos de traslado.</p>
-
+<p>Disminuye el tráfico en zonas montañosas.</p>
 </div>
-
 
 <div class="transport-card">
-
 <h3>Ecobici</h3>
-
-<img src="https://ciudadanosenred.com.mx/wp-content/uploads/2023/10/como-pagar-la-ecobici-cdmx-2023.jpeg">
-
+<img src="https://ciudadanosenred.com.mx/wp-content/uploads/2023/10/como-pagar-la-ecobici-cdmx-2023.jpeg"/>
 <ul>
-
-<li>Sistema 24 horas</li>
-
-<li>Renta por día o año</li>
-
-<li>Movilidad limpia</li>
-
+<li>Sistema disponible 24 horas.</li>
+<li>Ideal para trayectos cortos.</li>
+<li>Promueve actividad física.</li>
 </ul>
-
-<p>Promueve actividad física y transporte ecológico.</p>
-
+<p>Una opción saludable y ecológica.</p>
 </div>
 
 </section>
 
-
-
-<section class="grafica-section">
-
-<h2>¿Cuál es el transporte más usado?</h2>
-
-<p>
-Esta gráfica muestra aproximadamente cuántas personas utilizan diariamente los principales transportes sustentables de la Ciudad de México.
-</p>
-
+<div class="grafica">
+<h2>¿Cuál transporte se usa más?</h2>
 <canvas id="graficaTransporte"></canvas>
-
-</section>
-
-
+</div>
 
 <section class="links-section">
-
 <h2>Recursos Adicionales para Moverte Verde</h2>
-
 <ul>
 
 <li><a href="https://www.metro.cdmx.gob.mx/" target="_blank">Sitio Oficial Metro CDMX</a></li>
-
 <li><a href="https://www.metrobus.cdmx.gob.mx/" target="_blank">Sitio Oficial Metrobús CDMX</a></li>
-
 <li><a href="https://www.ste.cdmx.gob.mx/red-de-transporte/lineas-de-trolebus" target="_blank">Sitio Oficial Trolebús CDMX</a></li>
-
 <li><a href="https://www.ste.cdmx.gob.mx/red-de-transporte/cablebus" target="_blank">Sitio Oficial Cablebús CDMX</a></li>
-
 <li><a href="https://www.ecobici.cdmx.gob.mx/" target="_blank">Sitio Oficial Ecobici CDMX</a></li>
+<li><a href="https://www.semovi.cdmx.gob.mx/movilidad-integrada/tarjeta-de-movilidad-integrada" target="_blank">Tarjeta de Movilidad Integrada</a></li>
 
 </ul>
-
 </section>
 
 </div>
 
-
 <footer class="footer">
-
-<p>Proyecto escolar | Feria de Ciencia y Tecnología 2025</p>
-
-<p>Escuela Secundaria Técnica 06</p>
-
+<p>© 2025 Movilidad Sustentable | Escuela Secundaria Técnica 06</p>
 </footer>
 
-
 <script>
-
-const ctx = document.getElementById('graficaTransporte');
+const ctx=document.getElementById('graficaTransporte');
 
 new Chart(ctx,{
 type:'bar',
 data:{
-labels:[
-'Metro',
-'Metrobús',
-'Trolebús',
-'Cablebús',
-'Ecobici'
-],
+labels:['Metro','Metrobús','Trolebús','Cablebús','Ecobici'],
 datasets:[{
-label:'Millones de viajes diarios',
-data:[
-4.5,
-1.8,
-0.4,
-0.07,
-0.05
-],
+label:'Millones de usuarios diarios',
+data:[4.5,1.8,0.4,0.07,0.05],
 backgroundColor:[
-'#1976d2',
-'#2196f3',
-'#4caf50',
-'#81c784',
-'#90caf9'
+'#ff6384',
+'#36a2eb',
+'#4bc0c0',
+'#ffcd56',
+'#9966ff'
 ],
-borderRadius:10
+borderRadius:8
 }]
 },
 options:{
 responsive:true,
+plugins:{
+legend:{display:false}
+},
 animation:{
 duration:2000
-},
-plugins:{
-legend:{
-labels:{
-font:{
-size:14
-}
-}
-}
-},
-scales:{
-y:{
-beginAtZero:true
-}
 }
 }
 });
-
 </script>
 
 </body>
