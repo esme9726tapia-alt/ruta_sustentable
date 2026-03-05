@@ -3,333 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RUTA SUSTENTABLE</title>
+<title>Impacto Ambiental - Ruta Sustentable</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-:root {
---color-verde-oscuro:#2e7d32;
---color-verde-medio:#4caf50;
---color-verde-claro:#81c784;
---color-azul-oscuro:#1976d2;
---color-azul-medio:#2196f3;
---color-azul-claro:#90caf9;
---color-blanco:#ffffff;
---color-gris-texto:#333333;
---color-gris-fondo:#f4f4f4;
+
+:root{
+--verde1:#1b5e20;
+--verde2:#2e7d32;
+--verde3:#4caf50;
+--azul1:#0d47a1;
+--azul2:#1976d2;
+--azul3:#42a5f5;
+--blanco:#ffffff;
 }
 
 body{
-font-family:'Open Sans',sans-serif;
 margin:0;
-padding:0;
-background-color:var(--color-gris-fondo);
-color:var(--color-gris-texto);
-line-height:1.6;
+font-family:'Open Sans',sans-serif;
+background: linear-gradient(-45deg,#1b5e20,#1976d2,#2e7d32,#42a5f5);
+background-size:400% 400%;
+animation:fondo 15s ease infinite;
+color:#333;
+}
+
+@keyframes fondo{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
 header{
-background:linear-gradient(to right,var(--color-verde-medio),var(--color-azul-medio));
-color:var(--color-blanco);
-padding:2.5em 0;
 text-align:center;
-box-shadow:0 4px 8px rgba(0,0,0,0.2);
+padding:3em 1em;
+color:white;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(8px);
 }
 
 header h1{
-font-family:'Montserrat',sans-serif;
-font-size:2.8em;
-margin-bottom:0.2em;
+font-family:'Montserrat';
+font-weight:900;
+font-size:2.5em;
 }
 
-header p{
-font-size:1.3em;
-opacity:0.9;
+nav{
+background:rgba(0,0,0,0.5);
+padding:1em;
+text-align:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+margin:0 1em;
+font-size:1.1em;
+}
+
+nav a:hover{
+text-decoration:underline;
 }
 
 .container{
 width:90%;
-max-width:1200px;
-margin:2em auto;
-padding:1.5em;
-background-color:var(--color-blanco);
-border-radius:10px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
+max-width:1100px;
+margin:3em auto;
+background:rgba(255,255,255,0.92);
+padding:2em;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
 }
 
-.intro-section{
+h2{
 text-align:center;
-margin-bottom:3em;
-padding-bottom:2em;
-border-bottom:1px dashed var(--color-verde-claro);
+font-family:'Montserrat';
+color:var(--azul1);
 }
 
-.intro-section h2{
-color:var(--color-verde-oscuro);
-font-family:'Montserrat',sans-serif;
-font-size:2em;
-margin-bottom:0.8em;
+.info{
+text-align:center;
+max-width:800px;
+margin:auto;
+line-height:1.7;
 }
 
-.transport-grid{
+.transporte-lista{
+margin-top:2em;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:2em;
-}
-
-.transport-card{
-background-color:var(--color-gris-fondo);
-border-radius:8px;
-padding:1.5em;
-box-shadow:0 2px 5px rgba(0,0,0,0.08);
-transition:transform 0.3s ease;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-}
-
-.transport-card:hover{
-transform:translateY(-5px);
-}
-
-.transport-card h3{
-font-family:'Montserrat',sans-serif;
-color:var(--color-azul-oscuro);
-margin-top:0;
-margin-bottom:0.8em;
-font-size:1.6em;
-text-align:center;
-}
-
-.transport-card ul{
-list-style:none;
-padding:0;
-margin:0.5em 0;
-}
-
-.transport-card ul li{
-margin-bottom:0.5em;
-padding-left:1.5em;
-position:relative;
-}
-
-.transport-card ul li::before{
-content:'🌿';
-position:absolute;
-left:0;
-color:var(--color-verde-medio);
-}
-
-.transport-card p{
-font-size:0.95em;
-}
-
-.transport-card img{
-width:100%;
-border-radius:6px;
-margin-bottom:10px;
-}
-
-.links-section{
-margin-top:3em;
-text-align:center;
-border-top:1px dashed var(--color-azul-claro);
-padding-top:2em;
-}
-
-.links-section h2{
-color:var(--color-azul-oscuro);
-font-family:'Montserrat',sans-serif;
-font-size:2em;
-margin-bottom:1em;
-}
-
-.links-section ul{
-list-style:none;
-padding:0;
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:1.5em;
 }
 
-.links-section ul li{
-background-color:var(--color-azul-claro);
-border-radius:5px;
-padding:0.8em 1.5em;
-box-shadow:0 2px 5px rgba(0,0,0,0.1);
-}
-
-.links-section ul li a{
-color:var(--color-blanco);
-text-decoration:none;
-font-weight:bold;
-font-size:1.1em;
-}
-
-.links-section ul li:hover{
-background-color:var(--color-azul-oscuro);
-}
-
-.footer{
-background-color:var(--color-verde-oscuro);
-color:var(--color-blanco);
+.card{
+background:white;
+border-radius:12px;
+padding:1em;
+box-shadow:0 6px 15px rgba(0,0,0,0.2);
 text-align:center;
-padding:1.5em 0;
-margin-top:3em;
-font-size:0.9em;
 }
 
-.grafica{
-margin-top:40px;
-text-align:center;
+.card h3{
+font-family:'Montserrat';
+color:var(--verde2);
 }
 
 canvas{
-max-width:700px;
-margin:auto;
+margin-top:2em;
 }
+
+footer{
+text-align:center;
+padding:1.5em;
+color:white;
+margin-top:3em;
+background:rgba(0,0,0,0.6);
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>RUTA SUSTENTABLE</h1>
-<h2>¡Muévete Verde en la CDMX!</h2>
-<p>Descubre los transportes que cuidan tu ciudad y el planeta</p>
+<h1>Impacto Ambiental del Transporte</h1>
+<p>Proyecto Ruta Sustentable - Feria de Ciencia</p>
 </header>
+
+<nav>
+<a href="index.html">Inicio</a>
+<a href="impacto.html">Impacto Ambiental</a>
+</nav>
 
 <div class="container">
 
-<section class="intro-section">
-<h2>¿Sabías que tu forma de moverte impacta el medio ambiente?</h2>
-<p>En la Ciudad de México, tenemos muchas opciones de transporte que son amigables con la naturaleza y que te ayudan a cuidar nuestro aire y reducir el ruido. ¡Conocerlas es el primer paso para ser un ciudadano responsable!</p>
-<p>Aquí te presentamos algunos de los transportes sustentables más importantes para que los conozcas, valores y uses inteligentemente.</p>
+<h2>¿Cómo afecta el transporte al medio ambiente?</h2>
 
-<img src="https://img.freepik.com/vector-gratis/conjunto-transporte-publico-electrico-ecologico-plano-scooter-bicicleta-ciudad-moderna_88138-1810.jpg"/>
-</section>
+<p class="info">
+El transporte es una de las principales fuentes de contaminación en las ciudades. 
+Los vehículos particulares generan grandes cantidades de dióxido de carbono (CO₂), 
+uno de los gases responsables del cambio climático.
+<br><br>
+Sin embargo, los sistemas de transporte público y los medios de movilidad sustentable 
+reducen significativamente las emisiones contaminantes porque transportan a muchas 
+personas al mismo tiempo o utilizan energía eléctrica.
+</p>
 
-<section class="transport-grid">
+<div class="transporte-lista">
 
-<div class="transport-card">
+<div class="card">
+<h3>Auto Particular</h3>
+<p>Es el medio de transporte que genera más emisiones contaminantes por persona.</p>
+</div>
+
+<div class="card">
 <h3>Metro</h3>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png/1024px-NM-22_ingresando_a_la_estacion_Boulevard_Puerto_A%C3%A9reo.png"/>
-<ul>
-<li><b>Horarios:</b> Lunes a viernes de 5:00 a 24:00 hrs.</li>
-<li><b>Rutas:</b> 12 líneas que conectan gran parte de la ciudad.</li>
-<li><b>Costo:</b> $5.00 MXN.</li>
-<li><b>Pago:</b> Tarjeta de Movilidad Integrada.</li>
-</ul>
-<p>El Metro mueve a millones de personas diariamente reduciendo el uso de automóviles.</p>
+<p>Transporta millones de personas diariamente con emisiones mucho menores.</p>
 </div>
 
-<div class="transport-card">
+<div class="card">
 <h3>Metrobús</h3>
-<img src="https://cdn.unotv.com/images/2025/05/como-esta-el-servicio-del-metrobus-por-movilizaciones-de-la-cnte-en-cdmx-093427.jpg"/>
-<ul>
-<li>Cuenta con 7 líneas.</li>
-<li>Carriles exclusivos.</li>
-<li>Costo: $6 MXN.</li>
-</ul>
-<p>Reduce emisiones y mejora la movilidad urbana.</p>
+<p>Reduce tráfico y emisiones al transportar a muchos pasajeros.</p>
 </div>
 
-<div class="transport-card">
+<div class="card">
 <h3>Trolebús</h3>
-<img src="https://elceo.com/wp-content/uploads/2025/05/trolebus-elevado-asi-es-como-operara-el-nuevo-sistema-de-transporte-en-la-cdmx.jpg"/>
-<ul>
-<li>Vehículos eléctricos.</li>
-<li>No producen emisiones directas.</li>
-<li>Complementa Metro y Metrobús.</li>
-</ul>
-<p>Es uno de los sistemas más ecológicos.</p>
+<p>Funciona con electricidad, por lo que no produce emisiones directas.</p>
 </div>
 
-<div class="transport-card">
+<div class="card">
 <h3>Cablebús</h3>
-<img src="https://oem.com.mx/la-prensa/img/15558006/1654529028/BASE_LANDSCAPE/1200/image.webp"/>
-<ul>
-<li>Conecta zonas altas.</li>
-<li>Reduce tiempo de traslado.</li>
-<li>Costo: $7 MXN.</li>
-</ul>
-<p>Disminuye el tráfico en zonas montañosas.</p>
+<p>Transporte eléctrico que conecta zonas altas de la ciudad.</p>
 </div>
 
-<div class="transport-card">
+<div class="card">
 <h3>Ecobici</h3>
-<img src="https://ciudadanosenred.com.mx/wp-content/uploads/2023/10/como-pagar-la-ecobici-cdmx-2023.jpeg"/>
-<ul>
-<li>Sistema disponible 24 horas.</li>
-<li>Ideal para trayectos cortos.</li>
-<li>Promueve actividad física.</li>
-</ul>
-<p>Una opción saludable y ecológica.</p>
+<p>No produce emisiones y promueve actividad física saludable.</p>
 </div>
-
-</section>
-
-<div class="grafica">
-<h2>¿Cuál transporte se usa más?</h2>
-<canvas id="graficaTransporte"></canvas>
-</div>
-
-<section class="links-section">
-<h2>Recursos Adicionales para Moverte Verde</h2>
-<ul>
-
-<li><a href="https://www.metro.cdmx.gob.mx/" target="_blank">Sitio Oficial Metro CDMX</a></li>
-<li><a href="https://www.metrobus.cdmx.gob.mx/" target="_blank">Sitio Oficial Metrobús CDMX</a></li>
-<li><a href="https://www.ste.cdmx.gob.mx/red-de-transporte/lineas-de-trolebus" target="_blank">Sitio Oficial Trolebús CDMX</a></li>
-<li><a href="https://www.ste.cdmx.gob.mx/red-de-transporte/cablebus" target="_blank">Sitio Oficial Cablebús CDMX</a></li>
-<li><a href="https://www.ecobici.cdmx.gob.mx/" target="_blank">Sitio Oficial Ecobici CDMX</a></li>
-<li><a href="https://www.semovi.cdmx.gob.mx/movilidad-integrada/tarjeta-de-movilidad-integrada" target="_blank">Tarjeta de Movilidad Integrada</a></li>
-
-</ul>
-</section>
 
 </div>
 
-<footer class="footer">
+<h2>Emisiones aproximadas de CO₂ por tipo de transporte</h2>
+
+<canvas id="graficaImpacto"></canvas>
+
+<p style="text-align:center; margin-top:2em;">
+Elegir transporte público o medios sustentables puede reducir significativamente 
+la contaminación del aire en la Ciudad de México.
+</p>
+
+</div>
+
+<footer>
 <p>© 2025 Movilidad Sustentable | Escuela Secundaria Técnica 06</p>
 </footer>
 
 <script>
-const ctx=document.getElementById('graficaTransporte');
 
-new Chart(ctx,{
-type:'bar',
-data:{
-labels:['Metro','Metrobús','Trolebús','Cablebús','Ecobici'],
-datasets:[{
-label:'Millones de usuarios diarios',
-data:[4.5,1.8,0.4,0.07,0.05],
-backgroundColor:[
-'#ff6384',
-'#36a2eb',
-'#4bc0c0',
-'#ffcd56',
-'#9966ff'
+const ctx = document.getElementById('graficaImpacto').getContext('2d');
+
+new Chart(ctx, {
+type: 'bar',
+data: {
+labels: ['Auto particular','Metro','Metrobús','Trolebús','Cablebús','Ecobici'],
+datasets: [{
+label: 'Gramos de CO₂ por pasajero/km',
+data: [192,35,60,0,0,0],
+backgroundColor: [
+'#d32f2f',
+'#1976d2',
+'#42a5f5',
+'#4caf50',
+'#81c784',
+'#2e7d32'
 ],
-borderRadius:8
+borderRadius:10
 }]
 },
 options:{
 responsive:true,
 plugins:{
-legend:{display:false}
+legend:{
+labels:{
+font:{size:14}
+}
+}
+},
+scales:{
+y:{
+beginAtZero:true
+}
 },
 animation:{
 duration:2000
 }
 }
 });
+
 </script>
 
 </body>
 </html>
+
 
