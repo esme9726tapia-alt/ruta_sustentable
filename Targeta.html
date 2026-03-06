@@ -4,22 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lector de Tarjeta - Ruta Sustentable</title>
+<title>Escáner de Tarjeta Sustentable</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
---verde:#00ff9c;
---azul:#00d4ff;
---oscuro:#0a0f1c;
-}
 
 body{
 margin:0;
 font-family:'Open Sans',sans-serif;
-background:linear-gradient(120deg,#0a0f1c,#091b2e,#0f2c4d);
+background:linear-gradient(120deg,#021b79,#0575e6,#0f2027);
 background-size:400% 400%;
 animation:fondo 12s infinite alternate;
 color:white;
@@ -33,67 +27,96 @@ text-align:center;
 
 header{
 padding:40px;
-font-family:'Montserrat';
 }
 
 header h1{
-font-size:2.8em;
-letter-spacing:2px;
+font-family:'Orbitron';
+font-size:2.5em;
 }
 
 .container{
-margin:auto;
 max-width:900px;
+margin:auto;
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
 padding:40px;
 border-radius:20px;
-box-shadow:0 0 30px rgba(0,255,200,0.2);
+backdrop-filter:blur(10px);
+box-shadow:0 0 25px rgba(0,255,200,0.2);
 }
 
 .tarjeta{
-width:280px;
-height:170px;
-margin:30px auto;
+width:300px;
+height:180px;
+margin:auto;
 border-radius:15px;
-background:linear-gradient(135deg,#00ff9c,#00d4ff);
+background:linear-gradient(45deg,#00ffcc,#00aaff);
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:22px;
 font-weight:bold;
+font-size:20px;
 color:#003;
-box-shadow:0 0 25px rgba(0,255,200,0.5);
 animation:flotar 3s infinite ease-in-out;
 }
 
 @keyframes flotar{
-0%{transform:translateY(0px)}
+0%{transform:translateY(0)}
 50%{transform:translateY(-10px)}
-100%{transform:translateY(0px)}
+100%{transform:translateY(0)}
 }
 
 #estado{
-font-size:20px;
 margin-top:20px;
+font-size:18px;
 }
 
 #saldo{
 font-size:45px;
-margin-top:20px;
-color:var(--verde);
+margin-top:15px;
+font-weight:bold;
+color:#00ff9c;
+}
+
+.stats{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.stat{
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:12px;
+width:180px;
+}
+
+.stat h3{
+margin:0;
+font-size:28px;
+color:#00ff9c;
+}
+
+button{
+margin-top:25px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:linear-gradient(45deg,#00ffcc,#00aaff);
+font-size:16px;
+cursor:pointer;
 font-weight:bold;
 }
 
-.boton{
-margin-top:25px;
-padding:12px 25px;
-font-size:16px;
-border:none;
-border-radius:8px;
-background:linear-gradient(45deg,#00ff9c,#00d4ff);
-cursor:pointer;
-font-weight:bold;
+.metro-map{
+margin-top:40px;
+}
+
+.metro-map img{
+width:100%;
+max-width:600px;
+border-radius:10px;
 }
 
 footer{
@@ -107,8 +130,8 @@ opacity:0.7;
 <body>
 
 <header>
-<h1>Escáner de Tarjeta de Movilidad</h1>
-<p>Proyecto Ruta Sustentable - Feria de Ciencia</p>
+<h1>Terminal Inteligente de Movilidad</h1>
+<p>Proyecto Ruta Sustentable | Feria de Ciencia</p>
 </header>
 
 <div class="container">
@@ -117,16 +140,43 @@ opacity:0.7;
 ACERCA TU TARJETA
 </div>
 
-<p id="estado">Presiona el botón para iniciar el escaneo NFC</p>
+<p id="estado">Presiona iniciar escaneo</p>
 
 <div id="saldo">--</div>
 
-<button class="boton" onclick="leerTarjeta()">Iniciar escaneo</button>
+<button onclick="leerTarjeta()">Iniciar escaneo NFC</button>
+
+<div class="stats">
+
+<div class="stat">
+<h3 id="viajes">0</h3>
+<p>Viajes posibles</p>
+</div>
+
+<div class="stat">
+<h3 id="co2">0</h3>
+<p>CO₂ ahorrado</p>
+</div>
+
+<div class="stat">
+<h3 id="eco">0</h3>
+<p>Impacto ecológico</p>
+</div>
+
+</div>
+
+<div class="metro-map">
+
+<h2>Mapa del Metro CDMX</h2>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Mapa_del_Metro_de_la_Ciudad_de_M%C3%A9xico.svg">
+
+</div>
 
 </div>
 
 <footer>
-<p>Escuela Secundaria Técnica 06 | Proyecto Tecnológico</p>
+<p>Escuela Secundaria Técnica 06 | Tecnología e Informática</p>
 </footer>
 
 <script>
@@ -137,33 +187,43 @@ if('NDEFReader' in window){
 
 try{
 
-const reader = new NDEFReader();
+const reader = new NDEFReader()
 
-document.getElementById("estado").innerText="📡 Escaneando... acerca la tarjeta";
+document.getElementById("estado").innerText="📡 Escaneando tarjeta..."
 
-await reader.scan();
+await reader.scan()
 
-reader.onreading = event => {
+reader.onreading = event =>{
 
-document.body.style.background="linear-gradient(120deg,#021b79,#0575e6)";
+document.getElementById("estado").innerText="✅ Tarjeta detectada"
 
-document.getElementById("estado").innerText="✅ Tarjeta detectada";
+let saldo = Math.floor(Math.random()*120)+20
 
-let saldoDetectado = Math.floor(Math.random()*100)+10;
+document.getElementById("saldo").innerText="$"+saldo+" MXN"
 
-document.getElementById("saldo").innerText="$"+saldoDetectado+" MXN";
+let viajes = Math.floor(saldo/5)
 
-};
+document.getElementById("viajes").innerText=viajes
 
-}catch(error){
+let co2 = viajes*0.18
 
-document.getElementById("estado").innerText="Error al leer NFC";
+document.getElementById("co2").innerText=co2.toFixed(2)+" kg"
+
+document.getElementById("eco").innerText="ALTO"
+
+document.body.style.background="linear-gradient(120deg,#11998e,#38ef7d)"
+
+}
+
+}catch{
+
+document.getElementById("estado").innerText="Error leyendo NFC"
 
 }
 
 }else{
 
-document.getElementById("estado").innerText="⚠ Este dispositivo no soporta NFC";
+document.getElementById("estado").innerText="Este dispositivo no soporta NFC"
 
 }
 
@@ -172,10 +232,4 @@ document.getElementById("estado").innerText="⚠ Este dispositivo no soporta NFC
 </script>
 
 </body>
-</html>
-
-</script>
-
-</body>
-
 </html>
