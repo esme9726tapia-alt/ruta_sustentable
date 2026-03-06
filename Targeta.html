@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lector NFC</title>
+</head>
+
+<body>
+
+<h2>Acerca tu tarjeta al teléfono</h2>
+<p id="estado">Esperando tarjeta...</p>
+
+<script>
+
+async function leerTarjeta(){
+
+if ('NDEFReader' in window){
+
+const reader = new NDEFReader();
+
+await reader.scan();
+
+document.getElementById("estado").innerText="Escaneando... acerca tu tarjeta";
+
+reader.onreading = event => {
+
+document.getElementById("estado").innerText="Tarjeta detectada";
+
+console.log(event);
+
+};
+
+}else{
+
+document.getElementById("estado").innerText="Tu dispositivo no soporta NFC web";
+
+}
+
+}
+
+leerTarjeta();
+
+</script>
+
+</body>
+</html>
