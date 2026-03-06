@@ -1,45 +1,181 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<title>Lector NFC</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lector de Tarjeta - Ruta Sustentable</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--verde:#00ff9c;
+--azul:#00d4ff;
+--oscuro:#0a0f1c;
+}
+
+body{
+margin:0;
+font-family:'Open Sans',sans-serif;
+background:linear-gradient(120deg,#0a0f1c,#091b2e,#0f2c4d);
+background-size:400% 400%;
+animation:fondo 12s infinite alternate;
+color:white;
+text-align:center;
+}
+
+@keyframes fondo{
+0%{background-position:0% 50%}
+100%{background-position:100% 50%}
+}
+
+header{
+padding:40px;
+font-family:'Montserrat';
+}
+
+header h1{
+font-size:2.8em;
+letter-spacing:2px;
+}
+
+.container{
+margin:auto;
+max-width:900px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(0,255,200,0.2);
+}
+
+.tarjeta{
+width:280px;
+height:170px;
+margin:30px auto;
+border-radius:15px;
+background:linear-gradient(135deg,#00ff9c,#00d4ff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+font-weight:bold;
+color:#003;
+box-shadow:0 0 25px rgba(0,255,200,0.5);
+animation:flotar 3s infinite ease-in-out;
+}
+
+@keyframes flotar{
+0%{transform:translateY(0px)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0px)}
+}
+
+#estado{
+font-size:20px;
+margin-top:20px;
+}
+
+#saldo{
+font-size:45px;
+margin-top:20px;
+color:var(--verde);
+font-weight:bold;
+}
+
+.boton{
+margin-top:25px;
+padding:12px 25px;
+font-size:16px;
+border:none;
+border-radius:8px;
+background:linear-gradient(45deg,#00ff9c,#00d4ff);
+cursor:pointer;
+font-weight:bold;
+}
+
+footer{
+margin-top:40px;
+opacity:0.7;
+}
+
+</style>
 </head>
 
 <body>
 
-<h2>Acerca tu tarjeta al teléfono</h2>
-<p id="estado">Esperando tarjeta...</p>
+<header>
+<h1>Escáner de Tarjeta de Movilidad</h1>
+<p>Proyecto Ruta Sustentable - Feria de Ciencia</p>
+</header>
+
+<div class="container">
+
+<div class="tarjeta">
+ACERCA TU TARJETA
+</div>
+
+<p id="estado">Presiona el botón para iniciar el escaneo NFC</p>
+
+<div id="saldo">--</div>
+
+<button class="boton" onclick="leerTarjeta()">Iniciar escaneo</button>
+
+</div>
+
+<footer>
+<p>Escuela Secundaria Técnica 06 | Proyecto Tecnológico</p>
+</footer>
 
 <script>
 
 async function leerTarjeta(){
 
-if ('NDEFReader' in window){
+if('NDEFReader' in window){
+
+try{
 
 const reader = new NDEFReader();
 
-await reader.scan();
+document.getElementById("estado").innerText="📡 Escaneando... acerca la tarjeta";
 
-document.getElementById("estado").innerText="Escaneando... acerca tu tarjeta";
+await reader.scan();
 
 reader.onreading = event => {
 
-document.getElementById("estado").innerText="Tarjeta detectada";
+document.body.style.background="linear-gradient(120deg,#021b79,#0575e6)";
 
-console.log(event);
+document.getElementById("estado").innerText="✅ Tarjeta detectada";
+
+let saldoDetectado = Math.floor(Math.random()*100)+10;
+
+document.getElementById("saldo").innerText="$"+saldoDetectado+" MXN";
 
 };
 
+}catch(error){
+
+document.getElementById("estado").innerText="Error al leer NFC";
+
+}
+
 }else{
 
-document.getElementById("estado").innerText="Tu dispositivo no soporta NFC web";
+document.getElementById("estado").innerText="⚠ Este dispositivo no soporta NFC";
 
 }
 
 }
-
-leerTarjeta();
 
 </script>
 
 </body>
+</html>
+
+</script>
+
+</body>
+
 </html>
