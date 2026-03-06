@@ -232,5 +232,72 @@ document.getElementById("estado").innerText="Este dispositivo no soporta NFC"
 </script>
 
 </body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Lector de Tarjeta</title>
+
+<style>
+
+body{
+    background-color: black;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    transition: background-color 1s;
+}
+
+button{
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: #00e5ff;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #00bcd4;
+}
+
+iframe{
+    margin-top:20px;
+    width:90%;
+    height:500px;
+    border:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Lector de saldo</h1>
+
+<p>Presiona el botón para abrir la página y cambiar el fondo</p>
+
+<button onclick="abrirPagina()">Abrir página</button>
+
+<br><br>
+
+<iframe id="pagina"></iframe>
+
+<script>
+
+function abrirPagina(){
+
+    //cambia color de fondo
+    document.body.style.backgroundColor = "#0f2027";
+
+    //carga tu página
+    document.getElementById("pagina").src =
+    "https://esme9726tapia-alt.github.io/ruta_sustentable/index.html";
+
+}
+
+</script>
+
+</body>
 </html>
 
