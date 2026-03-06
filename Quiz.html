@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Juego Ruta Sustentable</title>
+<title>Quiz Sustentable</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,9 +14,9 @@ body{
 margin:0;
 font-family:'Open Sans',sans-serif;
 color:white;
-background:linear-gradient(-45deg,#1b5e20,#1976d2,#2e7d32,#42a5f5);
+background: linear-gradient(-45deg,#1b5e20,#1976d2,#2e7d32,#42a5f5);
 background-size:400% 400%;
-animation:fondo 15s ease infinite;
+animation:fondo 12s ease infinite;
 text-align:center;
 }
 
@@ -26,42 +26,43 @@ text-align:center;
 100%{background-position:0% 50%}
 }
 
-header{
-padding:3em;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(6px);
+.container{
+max-width:700px;
+margin:auto;
+padding:40px 20px;
 }
 
 h1{
 font-family:'Montserrat';
-font-size:3em;
-}
-
-.container{
-max-width:900px;
-margin:auto;
-padding:2em;
+font-size:2.5em;
 }
 
 .quiz-box{
 background:rgba(255,255,255,0.9);
 color:#333;
-padding:2em;
+padding:30px;
 border-radius:20px;
-box-shadow:0 10px 40px rgba(0,0,0,0.3);
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+margin-top:30px;
+}
+
+.question{
+font-size:1.4em;
+margin-bottom:20px;
 }
 
 button{
 display:block;
 width:100%;
 margin:10px 0;
-padding:15px;
-font-size:16px;
+padding:12px;
 border:none;
-border-radius:10px;
+border-radius:30px;
+font-size:16px;
 cursor:pointer;
-background:linear-gradient(to right,#2e7d32,#1976d2);
+background:linear-gradient(45deg,#2e7d32,#1976d2);
 color:white;
+font-weight:bold;
 transition:0.3s;
 }
 
@@ -69,16 +70,27 @@ button:hover{
 transform:scale(1.05);
 }
 
-.resultado{
-font-size:22px;
+.result{
+font-size:1.5em;
 margin-top:20px;
 font-weight:bold;
 }
 
-footer{
-margin-top:40px;
-padding:1em;
-background:rgba(0,0,0,0.5);
+.actions{
+margin-top:20px;
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.actions a{
+text-decoration:none;
+padding:10px 20px;
+border-radius:30px;
+background:#1976d2;
+color:white;
+font-weight:bold;
 }
 
 </style>
@@ -86,122 +98,156 @@ background:rgba(0,0,0,0.5);
 
 <body>
 
-<header>
-<h1>🎮 Juego Ruta Sustentable</h1>
-<p>¿Qué tanto sabes sobre transporte sustentable?</p>
-</header>
-
 <div class="container">
+
+<h1>Quiz de Movilidad Sustentable</h1>
+<p>¿Qué tanto sabes sobre transporte ecológico?</p>
 
 <div class="quiz-box">
 
-<h2 id="pregunta">Cargando pregunta...</h2>
+<div id="question" class="question"></div>
 
-<div id="respuestas"></div>
+<div id="answers"></div>
 
-<div class="resultado" id="resultado"></div>
+<div id="result" class="result"></div>
+
+<div class="actions" id="actions" style="display:none;">
+
+<button onclick="reiniciarQuiz()">Reiniciar Quiz</button>
+
+<a href="https://esme9726tapia-alt.github.io/ruta_sustentable/index.html">
+Volver a Inicio
+</a>
 
 </div>
 
 </div>
 
-<footer>
-Proyecto Ruta Sustentable - Feria de Ciencia
-</footer>
+</div>
 
 <script>
 
-const quiz = [
+const quiz=[
 
 {
-pregunta:"¿Qué transporte contamina menos?",
+pregunta:"¿Cuál transporte contamina menos?",
 respuestas:["Automóvil","Metro","Motocicleta"],
 correcta:1
 },
 
 {
-pregunta:"¿Qué transporte funciona con electricidad?",
-respuestas:["Trolebús","Taxi","Camión"],
+pregunta:"¿Cuál transporte promueve actividad física?",
+respuestas:["Ecobici","Taxi","Auto"],
 correcta:0
 },
 
 {
-pregunta:"¿Qué transporte ayuda a hacer ejercicio?",
-respuestas:["Bicicleta","Metro","Uber"],
+pregunta:"¿Qué transporte usa energía eléctrica?",
+respuestas:["Trolebús","Camión viejo","Auto"],
 correcta:0
 },
 
 {
-pregunta:"¿Cuál transporte mueve más personas en CDMX?",
-respuestas:["Metro","Automóvil","Taxi"],
+pregunta:"¿Cuál ayuda a reducir el tráfico?",
+respuestas:["Metrobus","Automóvil","Motocicleta"],
 correcta:0
 },
 
 {
-pregunta:"¿Qué transporte ayuda a reducir el tráfico?",
-respuestas:["Transporte público","Auto","Moto"],
+pregunta:"¿Qué transporte es más sustentable?",
+respuestas:["Bicicleta","Auto","Motocicleta"],
 correcta:0
 }
 
-]
+];
 
-let preguntaActual=0
-let puntaje=0
+let indice=0;
+let puntos=0;
 
 function cargarPregunta(){
 
-if(preguntaActual>=quiz.length){
+document.getElementById("result").innerHTML="";
 
-document.getElementById("pregunta").innerHTML="Juego terminado 🎉"
-document.getElementById("respuestas").innerHTML=""
-document.getElementById("resultado").innerHTML="Tu puntaje: "+puntaje+" / "+quiz.length
+const pregunta=quiz[indice];
 
-if(puntaje>=4){
-document.body.style.background="linear-gradient(45deg,#00c853,#64dd17)"
-}else{
-document.body.style.background="linear-gradient(45deg,#d32f2f,#ff5252)"
+document.getElementById("question").innerHTML=pregunta.pregunta;
+
+const respuestasDiv=document.getElementById("answers");
+respuestasDiv.innerHTML="";
+
+pregunta.respuestas.forEach((resp,i)=>{
+
+let btn=document.createElement("button");
+
+btn.innerText=resp;
+
+btn.onclick=()=>responder(i);
+
+respuestasDiv.appendChild(btn);
+
+});
+
 }
 
-return
-}
+function responder(i){
 
-let q=quiz[preguntaActual]
+if(i===quiz[indice].correcta){
 
-document.getElementById("pregunta").innerHTML=q.pregunta
+puntos++;
 
-let botones=""
-
-q.respuestas.forEach((r,i)=>{
-botones+=`<button onclick="responder(${i})">${r}</button>`
-})
-
-document.getElementById("respuestas").innerHTML=botones
-}
-
-function responder(opcion){
-
-let correcta=quiz[preguntaActual].correcta
-
-if(opcion==correcta){
-
-puntaje++
-
-document.body.style.background="linear-gradient(45deg,#00e676,#1de9b6)"
+document.body.style.background="linear-gradient(45deg,#2e7d32,#66bb6a)";
 
 }else{
 
-document.body.style.background="linear-gradient(45deg,#ff1744,#ff8a80)"
+document.body.style.background="linear-gradient(45deg,#c62828,#ef5350)";
 
 }
 
 setTimeout(()=>{
-preguntaActual++
-cargarPregunta()
-},800)
+
+document.body.style.background="linear-gradient(-45deg,#1b5e20,#1976d2,#2e7d32,#42a5f5)";
+
+indice++;
+
+if(indice<quiz.length){
+
+cargarPregunta();
+
+}else{
+
+mostrarResultado();
 
 }
 
-cargarPregunta()
+},700);
+
+}
+
+function mostrarResultado(){
+
+document.getElementById("question").innerHTML="Quiz terminado";
+
+document.getElementById("answers").innerHTML="";
+
+document.getElementById("result").innerHTML="Tu puntuación: "+puntos+" de "+quiz.length;
+
+document.getElementById("actions").style.display="flex";
+
+}
+
+function reiniciarQuiz(){
+
+indice=0;
+
+puntos=0;
+
+document.getElementById("actions").style.display="none";
+
+cargarPregunta();
+
+}
+
+cargarPregunta();
 
 </script>
 
