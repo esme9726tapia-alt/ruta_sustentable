@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Juego Ruta Sustentable</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Open Sans',sans-serif;
+color:white;
+background:linear-gradient(-45deg,#1b5e20,#1976d2,#2e7d32,#42a5f5);
+background-size:400% 400%;
+animation:fondo 15s ease infinite;
+text-align:center;
+}
+
+@keyframes fondo{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+header{
+padding:3em;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(6px);
+}
+
+h1{
+font-family:'Montserrat';
+font-size:3em;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:2em;
+}
+
+.quiz-box{
+background:rgba(255,255,255,0.9);
+color:#333;
+padding:2em;
+border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,0.3);
+}
+
+button{
+display:block;
+width:100%;
+margin:10px 0;
+padding:15px;
+font-size:16px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:linear-gradient(to right,#2e7d32,#1976d2);
+color:white;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.resultado{
+font-size:22px;
+margin-top:20px;
+font-weight:bold;
+}
+
+footer{
+margin-top:40px;
+padding:1em;
+background:rgba(0,0,0,0.5);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🎮 Juego Ruta Sustentable</h1>
+<p>¿Qué tanto sabes sobre transporte sustentable?</p>
+</header>
+
+<div class="container">
+
+<div class="quiz-box">
+
+<h2 id="pregunta">Cargando pregunta...</h2>
+
+<div id="respuestas"></div>
+
+<div class="resultado" id="resultado"></div>
+
+</div>
+
+</div>
+
+<footer>
+Proyecto Ruta Sustentable - Feria de Ciencia
+</footer>
+
+<script>
+
+const quiz = [
+
+{
+pregunta:"¿Qué transporte contamina menos?",
+respuestas:["Automóvil","Metro","Motocicleta"],
+correcta:1
+},
+
+{
+pregunta:"¿Qué transporte funciona con electricidad?",
+respuestas:["Trolebús","Taxi","Camión"],
+correcta:0
+},
+
+{
+pregunta:"¿Qué transporte ayuda a hacer ejercicio?",
+respuestas:["Bicicleta","Metro","Uber"],
+correcta:0
+},
+
+{
+pregunta:"¿Cuál transporte mueve más personas en CDMX?",
+respuestas:["Metro","Automóvil","Taxi"],
+correcta:0
+},
+
+{
+pregunta:"¿Qué transporte ayuda a reducir el tráfico?",
+respuestas:["Transporte público","Auto","Moto"],
+correcta:0
+}
+
+]
+
+let preguntaActual=0
+let puntaje=0
+
+function cargarPregunta(){
+
+if(preguntaActual>=quiz.length){
+
+document.getElementById("pregunta").innerHTML="Juego terminado 🎉"
+document.getElementById("respuestas").innerHTML=""
+document.getElementById("resultado").innerHTML="Tu puntaje: "+puntaje+" / "+quiz.length
+
+if(puntaje>=4){
+document.body.style.background="linear-gradient(45deg,#00c853,#64dd17)"
+}else{
+document.body.style.background="linear-gradient(45deg,#d32f2f,#ff5252)"
+}
+
+return
+}
+
+let q=quiz[preguntaActual]
+
+document.getElementById("pregunta").innerHTML=q.pregunta
+
+let botones=""
+
+q.respuestas.forEach((r,i)=>{
+botones+=`<button onclick="responder(${i})">${r}</button>`
+})
+
+document.getElementById("respuestas").innerHTML=botones
+}
+
+function responder(opcion){
+
+let correcta=quiz[preguntaActual].correcta
+
+if(opcion==correcta){
+
+puntaje++
+
+document.body.style.background="linear-gradient(45deg,#00e676,#1de9b6)"
+
+}else{
+
+document.body.style.background="linear-gradient(45deg,#ff1744,#ff8a80)"
+
+}
+
+setTimeout(()=>{
+preguntaActual++
+cargarPregunta()
+},800)
+
+}
+
+cargarPregunta()
+
+</script>
+
+</body>
+</html>
