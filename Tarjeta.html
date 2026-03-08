@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Escáner de Tarjeta Sustentable</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Orbitron:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Open Sans',sans-serif;
+background:linear-gradient(120deg,#021b79,#0575e6,#0f2027);
+background-size:400% 400%;
+animation:fondo 12s infinite alternate;
+color:white;
+text-align:center;
+}
+
+@keyframes fondo{
+0%{background-position:0% 50%}
+100%{background-position:100% 50%}
+}
+
+header{
+padding:40px;
+}
+
+header h1{
+font-family:'Orbitron';
+font-size:2.5em;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:rgba(255,255,255,0.05);
+padding:40px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 25px rgba(0,255,200,0.2);
+}
+
+.tarjeta{
+width:300px;
+height:180px;
+margin:auto;
+border-radius:15px;
+background:linear-gradient(45deg,#00ffcc,#00aaff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+font-size:20px;
+color:#003;
+animation:flotar 3s infinite ease-in-out;
+}
+
+@keyframes flotar{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+}
+
+#estado{
+margin-top:20px;
+font-size:18px;
+}
+
+#saldo{
+font-size:45px;
+margin-top:15px;
+font-weight:bold;
+color:#00ff9c;
+}
+
+.stats{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.stat{
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:12px;
+width:180px;
+}
+
+.stat h3{
+margin:0;
+font-size:28px;
+color:#00ff9c;
+}
+
+button{
+margin-top:25px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:linear-gradient(45deg,#00ffcc,#00aaff);
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.metro-map{
+margin-top:40px;
+}
+
+.metro-map img{
+width:100%;
+max-width:600px;
+border-radius:10px;
+}
+
+footer{
+margin-top:40px;
+opacity:0.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Terminal Inteligente de Movilidad</h1>
+<p>Proyecto Ruta Sustentable | Feria de Ciencia</p>
+</header>
+
+<div class="container">
+
+<div class="tarjeta">
+ACERCA TU TARJETA
+</div>
+
+<p id="estado">Presiona iniciar escaneo</p>
+
+<div id="saldo">--</div>
+
+<button onclick="leerTarjeta()">Iniciar escaneo NFC</button>
+
+<div class="stats">
+
+<div class="stat">
+<h3 id="viajes">0</h3>
+<p>Viajes posibles</p>
+</div>
+
+<div class="stat">
+<h3 id="co2">0</h3>
+<p>CO₂ ahorrado</p>
+</div>
+
+<div class="stat">
+<h3 id="eco">0</h3>
+<p>Impacto ecológico</p>
+</div>
+
+</div>
+
+<div class="metro-map">
+
+<h2>Mapa del Metro CDMX</h2>
+
+<img src="https://mapa-metro.com/mapas/Ciudad%20de%20Mexico/mapa-metro-ciudad-mexico.png">
+
+</div>
+
+</div>
+
+<footer>
+<p>Escuela Secundaria Técnica 06 | Tecnología e Informática</p>
+</footer>
+
+<script>
+
+async function leerTarjeta(){
+
+if('NDEFReader' in window){
+
+try{
+
+const reader = new NDEFReader()
+
+document.getElementById("estado").innerText="📡 Escaneando tarjeta..."
+
+await reader.scan()
+
+reader.onreading = event =>{
+
+document.getElementById("estado").innerText="✅ Tarjeta detectada"
+
+let saldo = Math.floor(Math.random()*120)+20
+
+document.getElementById("saldo").innerText="$"+saldo+" MXN"
+
+let viajes = Math.floor(saldo/5)
+
+document.getElementById("viajes").innerText=viajes
+
+let co2 = viajes*0.18
+
+document.getElementById("co2").innerText=co2.toFixed(2)+" kg"
+
+document.getElementById("eco").innerText="ALTO"
+
+document.body.style.background="linear-gradient(120deg,#11998e,#38ef7d)"
+
+}
+
+}catch{
+
+document.getElementById("estado").innerText="Error leyendo NFC"
+
+}
+
+}else{
+
+document.getElementById("estado").innerText="Este dispositivo no soporta NFC"
+
+}
+
+}
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Lector de Tarjeta</title>
+
+<style>
+
+body{
+    background-color: black;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    transition: background-color 1s;
+}
+
+button{
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: #00e5ff;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #00bcd4;
+}
+
+iframe{
+    margin-top:20px;
+    width:90%;
+    height:500px;
+    border:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Lector de saldo</h1>
+
+<p>Presiona el botón para abrir la página y cambiar el fondo</p>
+
+<button onclick="abrirPagina()">Abrir página</button>
+
+<br><br>
+
+<iframe id="pagina"></iframe>
+
+<script>
+
+function abrirPagina(){
+
+    //cambia color de fondo
+    document.body.style.backgroundColor = "#0f2027";
+
+    //carga tu página
+    document.getElementById("pagina").src =
+    "https://esme9726tapia-alt.github.io/ruta_sustentable/index.html";
+
+}
+
+</script>
+
+</body>
+</html>
+
